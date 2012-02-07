@@ -106,7 +106,10 @@
 (defun wrap-region-trigger ()
   "Called when trigger key is pressed."
   (interactive)
-  (let* ((key (char-to-string last-input-event))
+  (let* ((key (cond
+               ((equal last-input-event 'tab) "\t")
+               ((equal last-input-event 'return) "\n")
+               (t (char-to-string last-input-event))))
          (wrapper (wrap-region-find key)))
     (if (and (region-active-p) wrapper)
         (if (wrap-region-insert-tag-p key)
