@@ -49,13 +49,13 @@ Feature: Wrap Region
     Then I should see "This is some text"
 
   Scenario: Wrap with TAB
-    Given I add wrapper "\t/\t"
+    Given I add wrapper "	/	"
     And I turn on wrap-region globally
     When I open temp file "global"
     And I insert "Thisis sometext"
     And I select "is some"
     And I press "TAB"
-    Then I should see "This\tis some\ttext"
+    Then I should see "This	is some	text"
 
   Scenario: Wrap with RET
     Given I add wrapper "\n/\n"
@@ -75,12 +75,12 @@ Feature: Wrap Region
     Then I should see "This is some text "
 
   Scenario: Fallback when I have TAB wrapper
-    Given I add wrapper "\t/\t"
+    Given I add wrapper "	/	"
     And I turn on wrap-region globally
     When I open temp file "global"
     And I insert "This is some text"
     And I press "TAB"
-    Then I should see "This is some text\t"
+    Then I should see "This is some text	"
 
   Scenario: Fallback when I have RET wrapper
     Given I add wrapper "\n/\n"
